@@ -1,0 +1,25 @@
+describe('Login user checkout',function(){
+    it('Login user checkout',()=>{
+        cy.visit('https://tutorialsninja.com/demo/')
+        cy.get('.list-inline > .dropdown > .dropdown-toggle').click()
+        cy.get('.dropdown-menu > :nth-child(2) > a').click()
+        cy.get('#input-email').type('abcd@123.com')
+        cy.get('#input-password').type('abcd@123')
+        cy.get('form > .btn').click()
+        cy.get('.nav > :nth-child(2) > .dropdown-toggle').click()
+        cy.get('.open > .dropdown-menu > .see-all').click()
+        cy.get(':nth-child(1) > .product-thumb > .image > a > .img-responsive').click()
+        cy.get('#button-cart').click()
+        cy.get('#cart-total').click()
+        cy.get('[href="https://tutorialsninja.com/demo/index.php?route=checkout/checkout"] > strong').click()
+        
+        // //Billing details page 
+        cy.get('#button-payment-address').click()
+        cy.get('#button-shipping-address').click()
+        cy.get(':nth-child(5) > .form-control').type('confirmed')
+        cy.get('#button-shipping-method').click()
+        cy.get('[type="checkbox"]').click()
+        cy.get('#button-payment-method').click()
+        cy.get('#button-confirm').click()
+    })
+})
